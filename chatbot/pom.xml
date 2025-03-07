@@ -9,11 +9,14 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>22</maven.compiler.source>
-        <maven.compiler.target>22</maven.compiler.target>
+        <maven.compiler.source>19</maven.compiler.source>
+        <maven.compiler.target>19</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <opennlp.version>2.3.0</opennlp.version>
         <gson.version>2.10.1</gson.version>
+        <maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
+        <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
+        <maven-assembly-plugin.version>3.6.0</maven-assembly-plugin.version>
     </properties>
 
     <dependencies>
@@ -21,16 +24,16 @@
         <dependency>
             <groupId>org.apache.opennlp</groupId>
             <artifactId>opennlp-tools</artifactId>
-            <version></version>
+            <version>2.3.0</version>
         </dependency>
-        
+
         <!-- Gson for JSON processing (API integration, configuration) -->
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
-            <version></version>
+            <version>${gson.version}</version>
         </dependency>
-        
+
         <!-- JUnit for testing -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -39,23 +42,27 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-    
+
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.11.0</version>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.1.2</version>
+                <version>${maven-surefire-plugin.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
-                <version>3.6.0</version>
+                <version>${maven-assembly-plugin.version}</version>
                 <configuration>
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
